@@ -1,7 +1,10 @@
 # cudgel
-A ClojureScript API for [Phaser.io](http://phaser.io).
+A ClojureScript API for [Phaser.io](http://phaser.io). Free live reloading from [Figwheel](https://github.com/bhauman/lein-figwheel).
 
 ```clojure
+(require '[cudgel.core :as c])
+(require-macros '[cudgel.macros :refer [defgame]])
+    
 (defgame my-game
   "app"
   640 480
