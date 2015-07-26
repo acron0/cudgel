@@ -1,10 +1,14 @@
 # phaser-port
 
-FIXME: Write a one-line description of your library/project.
-
-## Overview
-
-FIXME: Write a paragraph about the library/project and highlight its goals.
+```clojure
+(defgame my-game
+  "app"
+  640 480
+  #js { :create (fn []
+                  (c/add my-game :text 10 10
+                         "phaser from clojurescript :)"
+                         #js { :font "20px Arial" :fill "#ff0044" :align "center" }))})
+```
 
 ## Setup
 
