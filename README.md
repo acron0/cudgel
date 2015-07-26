@@ -1,4 +1,5 @@
-# phaser-port
+# cudgel
+A ClojureScript API for [Phaser.io](http://phaser.io).
 
 ```clojure
 (defgame my-game
@@ -38,6 +39,6 @@ get live reloading, nor a REPL.
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Antony Woods
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
