@@ -9,7 +9,7 @@
                          "phaser from clojurescript :)"
                          #js { :font "20px Arial" :fill "#ff0044" :align "center" }))})
 ```
-
+![http://i.imgur.com/ffKfAJj.png](http://i.imgur.com/ffKfAJj.png)
 ## Setup
 
 To get an interactive development environment run:
