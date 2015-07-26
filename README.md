@@ -37,6 +37,11 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL. 
 
+## TODO
+ + Figwheel's live reloading needs fixing. It works about 3-4 times then falls over. Possibly something to do with WebGL context. Not sure.
+ + API should hide the need for #js reader macro. ClojureScript maps everywhere.
+ + 99% of the API is still missing!!
+
 ## License
 
 Copyright © 2014 Antony Woods
