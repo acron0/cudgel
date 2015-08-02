@@ -7,7 +7,7 @@
 (defprotocol ILoadable
   "Type that can be loaded"
   (load-me [this game]))
-n
+
 (defprotocol IAddable
   "Type that can be added to a scene"
   (add-me [this game]))
