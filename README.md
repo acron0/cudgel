@@ -4,16 +4,25 @@ A ClojureScript API for [Phaser.io](http://phaser.io). Free live reloading from 
 ```clojure
 (require '[cudgel.core :as c])
 (require-macros '[cudgel.macros :refer [defgame]])
-    
-(defgame my-game
+
+(def images
+  {:einstein-img (c/Image. "img/ra_einstein.png")})
+
+(def sprites
+  {:einstein (c/Sprite. (:einstein-img images) 20 20)})
+
+(defn preload [game]
+  (c/load game images))
+(defn create  [game]
+  (c/add game sprites))
+
+(defgame example-game
   "app"
-  640 480
-  #js { :create (fn []
-                  (c/add my-game :text 10 10
-                         "phaser from clojurescript :)"
-                         #js { :font "20px Arial" :fill "#ff0044" :align "center" }))})
+  800 600
+  {:preload preload
+   :create create})
+
 ```
-![http://i.imgur.com/ffKfAJj.png](http://i.imgur.com/ffKfAJj.png)
 ## Setup
 
 To get an interactive development environment run:
@@ -38,7 +47,7 @@ To create a production build run:
     lein cljsbuild once min
 
 And open your browser in `resources/public/index.html`. You will not
-get live reloading, nor a REPL. 
+get live reloading, nor a REPL.
 
 ## TODO
  + Figwheel's live reloading needs fixing. It works about 3-4 times then falls over. Possibly something to do with WebGL context. Not sure.
