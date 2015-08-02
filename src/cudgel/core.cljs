@@ -1,23 +1,51 @@
 (ns ^:figwheel-always cudgel.core)
 
-(defn- to-string-key
-  [the-key]
-  (apply str (interpose "." ((juxt namespace name) the-key))))
+;;;;;;;;;;;;;;;;
+;; PROTOCOLS ;;;
+;;;;;;;;;;;;;;;;
 
-(defmulti add (fn [_ primitive _] primitive))
+(defprotocol ILoadable
+  "Type that can be loaded"
+  (load-me [this game]))
+n
+(defprotocol IAddable
+  "Type that can be added to a scene"
+  (add-me [this game]))
 
-(defmethod add :text
-  [game _ x y text style]
-  (-> game .-add (.text x y text style)))
+(defprotocol IIdentifiable
+  "Type that can be identified"
+  (identify-me [this]))
 
-(defmethod add :sprite
-  [game _ x y key]
-  (-> game .-add (.sprite x y (to-string-key key))))
+;;;;;;;;;;;;;;;;
+;;;; TYPES ;;;;;
+;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(deftype Image [url]
+  IIdentifiable
+  (identify-me [this]
+    (-> url hash str))
+  ILoadable
+  (load-me [this game]
+    (-> game .-load (.image (identify-me this) url))))
 
-(defmulti load (fn [_ primitive _] primitive))
+(deftype Sprite [img x y]
+  IAddable
+  (add-me [this game]
+    (-> game .-add (.sprite x y (identify-me img)))))
 
-(defmethod load :image
-  [game _ key uri]
-  (-> game .-load (.image (to-string-key key) uri)))
+;;;;;;;;;;;;;;;;
+;; FUNCTIONS ;;;
+;;;;;;;;;;;;;;;;
+
+(defn load
+  [game candidate]
+  (if (map? candidate)
+    (doseq [[k v] candidate]
+      (load-me v game))
+    (load-me candidate game)))
+
+(defn add [game candidate]
+  (if (map? candidate)
+    (doseq [[k v] candidate]
+      (add-me v game))
+    (add-me candidate game)))
