@@ -23,6 +23,7 @@ A ClojureScript API for [Phaser.io](http://phaser.io). Free live reloading from 
    :create create})
 
 ```
+![http://i.imgur.com/kuwRDWZ.png](http://i.imgur.com/kuwRDWZ.png)
 ## Setup
 
 To get an interactive development environment run:
