@@ -1,5 +1,6 @@
 (ns ^:figwheel-always phaser-port.core
-    (:require [cudgel.core :as c :refer-macros [defgame]]))
+    (:require [cudgel.core :as c :refer-macros [defgame]]
+              [cudgel.tween :as t]))
 
 (enable-console-print!)
 
@@ -9,14 +10,21 @@
 (def sprites
   {:einstein (c/Sprite. 20 20 (:einstein-img images))})
 
+(def text (c/Text. 10
+                   10
+                   "phaser.io from clojurescript :)"
+                   {:font "30px Arial" :fill "#ff0044" :align "center"}))
+
 (defn preload [game]
   (c/load game images))
+
 (defn create  [game]
-  (c/add game sprites)
-  (c/add game (c/Text. 10
-                       10
-                       "phaser.io from clojurescript :)"
-                       {:font "30px Arial" :fill "#ff0044" :align "center"})))
+  (let [sprite-handles (c/add game sprites)
+        text-handle    (c/add game text)]
+
+  ;; tween stuff
+    (let [t (t/tween-to game text-handle {:x 600} 3000)]
+      (-> t (.start)))))
 
 (defgame example-game
   "app"

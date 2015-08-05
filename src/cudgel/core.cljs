@@ -20,6 +20,7 @@
 ;;;; TYPES ;;;;;
 ;;;;;;;;;;;;;;;;
 
+;; primitives
 (deftype Image [url]
   IIdentifiable
   (identify-me [this]
@@ -51,6 +52,5 @@
 
 (defn add [game candidate]
   (if (map? candidate)
-    (doseq [[k v] candidate]
-      (add-me v game))
+    (into {} (map (fn[[k v]] (hash-map k (add-me v game))) candidate))
     (add-me candidate game)))
