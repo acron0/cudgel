@@ -28,10 +28,15 @@
   (load-me [this game]
     (-> game .-load (.image (identify-me this) url))))
 
-(deftype Sprite [img x y]
+(deftype Sprite [x y img]
   IAddable
   (add-me [this game]
     (-> game .-add (.sprite x y (identify-me img)))))
+
+(deftype Text [x y text style]
+  IAddable
+  (add-me [this game]
+    (-> game .-add (.text x y text (clj->js style)))))
 
 ;;;;;;;;;;;;;;;;
 ;; FUNCTIONS ;;;
