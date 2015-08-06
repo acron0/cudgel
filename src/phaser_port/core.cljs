@@ -22,9 +22,10 @@
   (let [sprite-handles (c/add game sprites)
         text-handle    (c/add game text)]
 
-  ;; tween stuff
-    (let [t (t/tween-to game text-handle {:x 600} 3000)]
-      (-> t (.start)))))
+    ;; tween stuff
+    (let [t1  (t/tween-from game text-handle {:x 600} 3000)
+          t2 (t/tween-to game text-handle {:x 50} 1000)]
+      (t/start (t/chain t1 t2)))))
 
 (defgame example-game
   "app"
