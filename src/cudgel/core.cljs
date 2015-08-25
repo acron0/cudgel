@@ -50,7 +50,15 @@
       (load-me v game))
     (load-me candidate game)))
 
-(defn add [game candidate]
+(defn add
+  [game candidate]
   (if (map? candidate)
     (into {} (map (fn[[k v]] (hash-map k (add-me v game))) candidate))
     (add-me candidate game)))
+
+;;
+
+(defn set-anchor
+  [sprite pivot]
+  (if (instance? Sprite sprite)
+    (-> sprite .-anchor (.set pivot))))
