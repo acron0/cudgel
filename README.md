@@ -22,8 +22,40 @@ A ClojureScript API for [Phaser.io](http://phaser.io). Free live reloading from 
   {:preload preload
    :create create})
 
+
 ```
 ![http://i.imgur.com/kuwRDWZ.png](http://i.imgur.com/kuwRDWZ.png)
+
+## Coverage
+
+Currently targetting Phaser 2.4.2
+
+| Feature       | Finished? | Started? | Where?                                                                         |
+|---------------|-----------|----------|--------------------------------------------------------------------------------|
+| Game States   | No        | No       |                                                                                |
+| Loader        | No        | No       |                                                                                |
+| Game Scaling  | No        | No       |                                                                                |
+| Signals       | No        | No       |                                                                                |
+| Plugins       | No        | No       |                                                                                |
+| Game Objects  | No        | No       |                                                                                |
+| Display       | No        | No       |                                                                                |
+| Graphics      | No        | Yes      | [core.cljs](https://github.com/acron0/cudgel/blob/master/src/cudgel/core.cljs) |
+| Text          | No        | Yes      | [core.cljs](https://github.com/acron0/cudgel/blob/master/src/cudgel/core.cljs) |
+| Animation     | No        | No       |                                                                                |
+| Geometry      | No        | No       |                                                                                |
+| Time          | No        | No       |                                                                                |
+| Tilemaps      | No        | No       |                                                                                |
+| Math          | No        | No       |                                                                                |
+| Network       | No        | No       |                                                                                |
+| Particles     | No        | No       |                                                                                |
+| Physics       | No        | No       |                                                                                |
+| Input         | No        | No       |                                                                                |
+| Gamepads      | No        | No       |                                                                                |
+| Tweens        | No        | No       |                                                                                |
+| Sound         | No        | No       |                                                                                |
+| System        | No        | No       |                                                                                |
+| Utils         | No        | No       |                                                                                |
+
 ## Setup
 
 To get an interactive development environment run:
