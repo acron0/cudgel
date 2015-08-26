@@ -16,10 +16,6 @@
   "Type that can be identified"
   (identify-me [this]))
 
-(defprotocol IAnchorable
-  "Type that can be anchored"
-  (anchor-me [this pivot]))
-
 ;;;;;;;;;;;;;;;;
 ;;;; TYPES ;;;;;
 ;;;;;;;;;;;;;;;;
@@ -63,5 +59,21 @@
 ;;
 
 (defn set-anchor
-  [candidate pivot]
-  (-> candidate .-anchor (.set pivot)))
+  ([candidate xy]
+   (-> candidate .-anchor (.set xy)))
+  ([candidate x y]
+   (-> candidate .-anchor (.set x y))))
+
+(defn set-scale
+  ([candidate xy]
+   (-> candidate .-scale (.set xy)))
+  ([candidate x y]
+   (-> candidate .-scale (.set x y))))
+
+(defn set-x
+  [candidate x]
+  (set! (.-x candidate) x))
+
+(defn set-y
+  [candidate y]
+  (set! (.-y candidate) y))

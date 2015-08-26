@@ -17,7 +17,7 @@
            repeat 0
            yoyo false]}]
   (let [t (create-tween game target)]
-    (-> t (.to (clj->js tween-args) time))
+    (.to t (clj->js tween-args) time)
     t))
 
 (defn tween-from
@@ -29,15 +29,15 @@
            repeat 0
            yoyo false]}]
   (let [t (create-tween game target)]
-    (-> t (.from (clj->js tween-args) time))
+    (.from t (clj->js tween-args) time)
     t))
 
 ;;;;;;
 
 (defn chain
   [tween1 tween2]
-  (-> tween1 (.chain tween2)))
+  (.chain tween1 tween2))
 
 (defn start
   [tween]
-  (-> tween .start))
+  (.start tween))
