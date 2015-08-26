@@ -16,6 +16,10 @@
   "Type that can be identified"
   (identify-me [this]))
 
+(defprotocol IAnchorable
+  "Type that can be anchored"
+  (anchor-me [this pivot]))
+
 ;;;;;;;;;;;;;;;;
 ;;;; TYPES ;;;;;
 ;;;;;;;;;;;;;;;;
@@ -59,6 +63,5 @@
 ;;
 
 (defn set-anchor
-  [sprite pivot]
-  (if (instance? Sprite sprite)
-    (-> sprite .-anchor (.set pivot))))
+  [candidate pivot]
+  (-> candidate .-anchor (.set pivot)))
